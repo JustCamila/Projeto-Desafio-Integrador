@@ -1,4 +1,5 @@
 package scr;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -11,10 +12,11 @@ public class Main {
 
         System.out.println("-----------Bem-vindo(a)!-----------");
 
-        while (opcao != 3) {
-            System.out.println("1- Cadastro de Cliente");
+        while (opcao != 4) {
+            System.out.println("\n1- Cadastro de Cliente");
             System.out.println("2- Cadastro de Produtos");
-            System.out.println("3- Sair do sistema...");
+            System.out.println("3- Consultas e Relatórios"); 
+            System.out.println("4- Sair do sistema...");       
             System.out.print("Escolha uma opção: ");
 
             opcao = leitor.nextInt();
@@ -23,8 +25,7 @@ public class Main {
             switch (opcao) {
                 case 1:
                     System.out.println(
-        "\n-------------------CADASTRO CLIENTE-------------------");
-
+                        "\n-------------------CADASTRO CLIENTE-------------------");
                     System.out.print("Digite o nome: ");
                     String nomeDigitado = leitor.nextLine();
 
@@ -32,10 +33,8 @@ public class Main {
                     String emailDigitado = leitor.nextLine();
 
                     try {
-
                         Cliente novoCliente = new Cliente(nomeDigitado, emailDigitado);
                         clientedao.salvar(novoCliente);
-
                     } catch (IllegalArgumentException e) {
                         System.err.println("Erro ao criar cliente: " + e.getMessage());
                     }
@@ -43,8 +42,7 @@ public class Main {
 
                 case 2:
                     System.out.println(
-    "\n--------------------CADASTRO DE PRODUTO--------------------");
-
+                        "\n--------------------CADASTRO DE PRODUTO--------------------");
                     System.out.print("Nome do produto: ");
                     String nome = leitor.nextLine();
 
@@ -76,21 +74,56 @@ public class Main {
                     try {
                         Produto novoProduto = new Produto(nome, estoque, preco, categoriaEscolhida);
                         produtodao.criarProduto(novoProduto);
-
                     } catch (IllegalArgumentException e) {
                         System.err.println("\n Erro de Validação: " + e.getMessage());
                     }
-                break;
+                    break;
 
                 case 3:
+                    System.out.println("\n==================================");
+                    System.out.println("CONSULTAS E RELATÓRIOS ");
+                    System.out.println("==================================");
+                    System.out.println("1 - Listar Todos os Clientes");
+                    System.out.println("2 - Listar Todos os Produtos");
+                    System.out.println("3 - Voltar ao Menu Principal");
+                    System.out.print("Escolha uma opção: ");
+                    int opcaoSubmenu = leitor.nextInt();
+                    leitor.nextLine(); 
+
+                    switch (opcaoSubmenu) {
+                        case 1:
+                            System.out.println("\n --- LISTA DE CLIENTES ---");
+                            // Chama o método listarTodos() do ClienteDAO
+                            List<Cliente> listaClientes = clientedao.listarTodos();
+                            
+                            // Mostra cada cliente do banco
+                            for (Cliente c : listaClientes) {
+                                System.out.println("-> Nome: " + c.getNome() + " | Email: " + c.getEmail());
+                            }
+                            break;
+
+                        case 2:
+                            System.out.println("\n --- LISTA DE PRODUTOS ---");
+                            // esperando codigo realizado pelo João Marcelo
+                            break;
+
+                        case 3:
+                            System.out.println("Voltando ao menu principal...");
+                            break;
+
+                        default:
+                            System.out.println("Opção inválida!");
+                            break;
+                    }
+                    break;
+
+                case 4:
                     System.out.println("Encerrando o sistema...");
-                break;
+                    break;
 
                 default:
                     System.out.println("Opção invalida!");
-
             }
-
         }
 
         leitor.close();
