@@ -79,6 +79,7 @@ public class Main {
                     }
                     break;
 
+
                 case 3:
                     System.out.println("\n==================================");
                     System.out.println("CONSULTAS E RELATÓRIOS ");
@@ -104,8 +105,16 @@ public class Main {
 
                         case 2:
                             System.out.println("\n --- LISTA DE PRODUTOS ---");
-                            // esperando codigo realizado pelo João Marcelo
+                            // Chama o método listarTodos() do ProdutoDAO
+                            List<Produto> listaProdutos = produtodao.listarTodos();
+
+                            // Mostra cada produto do banco
+                            for (Produto p : listaProdutos) {
+                                System.out.println("-> " + p.getNome_produto() + "\nEstoque: " + p.getEstoque() + "\nPreço: R$ " + p.getPreco() + "\nCategoria: " + p.getCategoria() + "\n");
+                            }
                             break;
+                            
+                        
 
                         case 3:
                             System.out.println("Voltando ao menu principal...");
