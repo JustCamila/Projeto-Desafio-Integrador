@@ -32,4 +32,25 @@ public class ItemPedido {
         this.precoTotal = this.precoUnitario * this.quantidade;
     }
 
+    
+public int getId() {
+        return id;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public double getPrecoUnitario() {
+        return precoUnitario;
+    }
+
+    // novo método para calcular o subtotal do item
+    public double getSubtotal() {
+        return this.quantidade * this.precoUnitario;
+    }
 }
