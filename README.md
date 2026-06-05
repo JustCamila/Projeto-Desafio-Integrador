@@ -22,6 +22,7 @@ Aqui estão as principais ferramentas, linguagens e frameworks usados no desenvo
 ## Funcionalidades
 
 - Cadastro de clientes e produtos.
+- Realização de compras.
 - Emissão de relatorio.
 
 ---
