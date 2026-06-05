@@ -10,13 +10,16 @@ import java.util.List;
 public class ClienteDAO {
 
     public void salvar(Cliente cliente) {
-        String sql = "INSERT INTO clientes (nome, email) VALUES (?, ?)";
+        String sql = "INSERT INTO clientes (nome, email, telefone, logradouro, bairro) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
+            stmt.setString(2, cliente.getTelefone());
+            stmt.setString(2, cliente.getLogradouro());
+            stmt.setString(2, cliente.getBairro());
 
             stmt.executeUpdate();
             System.out.println("Cliente salvo!");
@@ -28,7 +31,7 @@ public class ClienteDAO {
 
 public List<Cliente> listarTodos() {
     List<Cliente> clientes = new ArrayList<>();
-    String sql = "SELECT nome, email FROM clientes"; // <-- puxa os nomes e emails do banco 
+    String sql = "SELECT nome, email, telefone, logradouro, bairro FROM clientes"; // <-- puxa todos os dados do banco 
 
     try (Connection conn = Conexao.conectar();  // o try está aqui pra garantir que seja fechado corretamente mesmo ouvendo um erro na execução
          PreparedStatement stmt = conn.prepareStatement(sql);
@@ -37,8 +40,11 @@ public List<Cliente> listarTodos() {
         while (rs.next()) {
             String nome = rs.getString("nome");
             String email = rs.getString("email");
+            String telefone = rs.getString("telefone");
+            String logradouro = rs.getString("logradouro");
+            String bairro = rs.getString("bairro");
 
-            Cliente cliente = new Cliente(nome, email);
+            Cliente cliente = new Cliente(nome, email, telefone, logradouro, bairro);
             clientes.add(cliente);
         }
 
