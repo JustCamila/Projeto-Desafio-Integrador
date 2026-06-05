@@ -1,8 +1,8 @@
-CREATE DATABASE loja_toptop
+CREATE DATABASE loja_delicias
 character set utf8mb4
 collate utf8mb4_general_ci;
 
-use loja_toptop;
+use loja_delicias;
 
 create table clientes(
 	id_cliente int primary key auto_increment,
