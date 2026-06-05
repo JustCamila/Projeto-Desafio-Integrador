@@ -7,7 +7,10 @@ use loja_toptop;
 create table clientes(
 	id_cliente int primary key auto_increment,
     nome varchar(150) not null,
-    email varchar(150) unique
+    email varchar(150) unique,
+    telefone varchar(11) not null,
+    logradouro varchar(60) not null,
+    bairro varchar(50) not null
 );
 
 create table produtos(
