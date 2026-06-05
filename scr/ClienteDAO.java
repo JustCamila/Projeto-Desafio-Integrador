@@ -31,7 +31,7 @@ public class ClienteDAO {
 
 public List<Cliente> listarTodos() {
     List<Cliente> clientes = new ArrayList<>();
-    String sql = "SELECT nome, email FROM clientes"; // <-- puxa os nomes e emails do banco 
+    String sql = "SELECT nome, email, telefone, logradouro, bairro FROM clientes"; // <-- puxa todos os dados do banco 
 
     try (Connection conn = Conexao.conectar();  // o try está aqui pra garantir que seja fechado corretamente mesmo ouvendo um erro na execução
          PreparedStatement stmt = conn.prepareStatement(sql);
@@ -40,8 +40,11 @@ public List<Cliente> listarTodos() {
         while (rs.next()) {
             String nome = rs.getString("nome");
             String email = rs.getString("email");
+            String telefone = rs.getString("telefone");
+            String logradouro = rs.getString("logradouro");
+            String bairro = rs.getString("bairro");
 
-            Cliente cliente = new Cliente(nome, email);
+            Cliente cliente = new Cliente(nome, email, telefone, logradouro, bairro);
             clientes.add(cliente);
         }
 

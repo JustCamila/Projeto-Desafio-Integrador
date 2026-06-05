@@ -32,8 +32,17 @@ public class Main {
                     System.out.print("Digite o email: ");
                     String emailDigitado = leitor.nextLine();
 
+                    System.out.print("Digite o telefone: ");
+                    String telefoneDigitado = leitor.nextLine();
+
+                    System.out.print("Digite o logradouro: ");
+                    String logradouroDigitado = leitor.nextLine();
+
+                    System.out.print("Digite o bairro: ");
+                    String bairroDigitado = leitor.nextLine();
+
                     try {
-                        Cliente novoCliente = new Cliente(nomeDigitado, emailDigitado);
+                        Cliente novoCliente = new Cliente(nomeDigitado, emailDigitado, telefoneDigitado, logradouroDigitado, bairroDigitado);
                         clientedao.salvar(novoCliente);
                     } catch (IllegalArgumentException e) {
                         System.err.println("Erro ao criar cliente: " + e.getMessage());
