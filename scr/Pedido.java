@@ -29,6 +29,42 @@ public Pedido(Cliente cliente) {
         this.status = status;
         this.itens = itens != null ? itens : new ArrayList<>();
     }
+
+    // método para adicionar um item ao pedido
+    public void adicionarItem(ItemPedido item) {
+        if (item == null) {
+            throw new IllegalArgumentException("Não é possível adicionar um item nulo.");
+        }
+        this.itens.add(item);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+    //retorna uma lista imutável dos itens do pedido para evitar modificações externas
+    public List<ItemPedido> getItens() {
+        return Collections.unmodifiableList(itens);
+    }
+
+    public StatusPedido getStatus() {
+        return status;
+    }
+   // como o status muda ao longo do ciclo, ele 
+    public void setStatus(StatusPedido status) {
+        if (status == null) {
+            throw new IllegalArgumentException("O status do pedido não pode ser nulo.");
+        }
+        this.status = status;
+    }
+
+
+
 }
+
+
 
 
