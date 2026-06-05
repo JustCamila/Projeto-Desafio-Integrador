@@ -10,13 +10,16 @@ import java.util.List;
 public class ClienteDAO {
 
     public void salvar(Cliente cliente) {
-        String sql = "INSERT INTO clientes (nome, email) VALUES (?, ?)";
+        String sql = "INSERT INTO clientes (nome, email, telefone, logradouro, bairro) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
+            stmt.setString(2, cliente.getTelefone());
+            stmt.setString(2, cliente.getLogradouro());
+            stmt.setString(2, cliente.getBairro());
 
             stmt.executeUpdate();
             System.out.println("Cliente salvo!");
