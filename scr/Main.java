@@ -86,7 +86,9 @@ public class Main {
                     System.out.println("==================================");
                     System.out.println("1 - Listar Todos os Clientes");
                     System.out.println("2 - Listar Todos os Produtos");
-                    System.out.println("3 - Voltar ao Menu Principal");
+                    System.out.println("3 - Relatorio estoque por categoria");
+                    System.out.println("4 - Relatorio Media preço por categoria");
+                    System.out.println("5 - Voltar ao Menu Principal");
                     System.out.print("Escolha uma opção: ");
                     int opcaoSubmenu = leitor.nextInt();
                     leitor.nextLine(); 
@@ -114,10 +116,16 @@ public class Main {
                             }
                             break;
                             
-                        
+                        case 3: 
+                            System.out.println("\n --- Relatorio Estoque disponivel ---");
+                            produtodao.relatorioEstoque();
 
-                        case 3:
-                            System.out.println("Voltando ao menu principal...");
+                        case 4: 
+                            System.out.println("\n --- Relatorio Media de preco por categoria ---");
+                            produtodao.relatorioMedia();
+
+                        case 5:
+                            System.out.println("\nVoltando ao menu principal...");
                             break;
 
                         default:
