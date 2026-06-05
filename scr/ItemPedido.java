@@ -5,7 +5,6 @@ public class ItemPedido {
     private final Produto produto;
     private final int quantidade;
     private final double precoUnitario;
-    private final double precoTotal;
 
     //construtorzinho para quando criarmos um novo item
     public ItemPedido(Produto produto, int quantidade) {
@@ -20,7 +19,6 @@ public class ItemPedido {
         this.produto = produto;
         this.quantidade = quantidade;
         this.precoUnitario = produto.getPreco();
-        this.precoTotal = this.precoUnitario * this.quantidade;
     }
 
     //construtorzinho para quando formos ler um item do banquin de dados
@@ -29,10 +27,9 @@ public class ItemPedido {
         this.produto = produto;
         this.quantidade = quantidade;
         this.precoUnitario = precoUnitario;
-        this.precoTotal = this.precoUnitario * this.quantidade;
     }
 
-    
+
 public int getId() {
         return id;
     }
