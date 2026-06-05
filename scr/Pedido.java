@@ -60,7 +60,14 @@ public Pedido(Cliente cliente) {
         }
         this.status = status;
     }
-
+    // método para calcular o valor total do pedido somando os itens
+    public double getTotalPedido() {
+        double total = 0.0;
+        for (ItemPedido item : itens) {
+            total += item.getSubtotal();
+        }
+        return total;
+    }
 
 
 }
