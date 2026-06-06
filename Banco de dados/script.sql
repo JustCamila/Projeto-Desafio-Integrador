@@ -5,7 +5,7 @@ collate utf8mb4_general_ci;
 use loja_delicias;
 
 create table clientes(
-	id_cliente int primary key auto_increment,
+    id_cliente int primary key auto_increment,
     nome varchar(150) not null,
     email varchar(150) unique,
     telefone varchar(11) not null,
@@ -14,25 +14,30 @@ create table clientes(
 );
 
 create table produtos(
-	id_produto int primary key auto_increment,
+    id_produto int primary key auto_increment,
     nome_produto varchar(100) not null,
     estoque int not null,
     preco double,
-	categoria varchar(50)
+    categoria varchar(50)
 );
 
 create table pedido(
-	id_pedido int primary key auto_increment,
+    id_pedido int primary key auto_increment,
     cliente_id int,
     status varchar(50) not null,
-    foreign key(cliente_id) references clientes(id_cliente)
+    foreign key(cliente_id) references clientes(id_cliente) 
+        on delete cascade
+        on update cascade
 );
 
 create table itens_pedidos(
-	produto_id int,
+    produto_id int,
     pedido_id int,
-	quantidade_itens int not null,
-    foreign key(pedido_id) references pedido(id_pedido),
-    foreign key(produto_id) references produtos(id_produto)
+    quantidade_itens int not null,
+    foreign key(pedido_id) references pedido(id_pedido) 
+        on delete cascade
+        on update cascade,
+    foreign key(produto_id) references produtos(id_produto) 
+        on delete cascade
+        on update cascade
 );
-
