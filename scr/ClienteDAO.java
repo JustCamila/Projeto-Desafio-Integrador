@@ -17,9 +17,9 @@ public class ClienteDAO {
             
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
-            stmt.setString(2, cliente.getTelefone());
-            stmt.setString(2, cliente.getLogradouro());
-            stmt.setString(2, cliente.getBairro());
+            stmt.setString(3, cliente.getTelefone());
+            stmt.setString(4, cliente.getLogradouro());
+            stmt.setString(5, cliente.getBairro());
 
             stmt.executeUpdate();
             System.out.println("Cliente salvo!");
